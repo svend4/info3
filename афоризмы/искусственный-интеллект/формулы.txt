@@ -1,0 +1,437 @@
+# Искусственный интеллект — Математические формулы и уравнения
+
+## 🧠 Базовые формулы ИИ
+
+**Искусственный интеллект:**
+```
+ИИ = Данные × Алгоритмы × Вычислительная_мощь
+AI = D × A × C
+```
+
+**Машинное обучение:**
+```
+ML = f(X) → Y
+где X — входные данные, Y — предсказание
+```
+
+**Глубокое обучение:**
+```
+DL = f(f(f(...f(X)...))) → Y
+композиция множества слоёв
+```
+
+## 📊 Формулы обучения
+
+**Функция потерь:**
+```
+Loss = ∑(Y_predicted - Y_actual)²
+L = ∑(Ŷ - Y)²
+```
+
+**Градиентный спуск:**
+```
+θ_new = θ_old - α × ∇Loss
+где α — learning rate
+```
+
+**Оптимизация:**
+```
+min L(θ) = min ∑(h(x_i) - y_i)²
+θ
+```
+
+## 🤖 Формулы нейронных сетей
+
+**Нейрон:**
+```
+y = f(∑(w_i × x_i) + b)
+где f — функция активации
+```
+
+**Свёрточная сеть:**
+```
+Output = f(Input ⊗ Kernel + Bias)
+где ⊗ — операция свёртки
+```
+
+**Backpropagation:**
+```
+∂L/∂w = ∂L/∂y × ∂y/∂w
+```
+
+## 📈 Формулы точности
+
+**Точность:**
+```
+Accuracy = (TP + TN) / (TP + TN + FP + FN)
+```
+
+**Precision:**
+```
+Precision = TP / (TP + FP)
+```
+
+**Recall:**
+```
+Recall = TP / (TP + FN)
+```
+
+**F1-score:**
+```
+F1 = 2 × (Precision × Recall) / (Precision + Recall)
+```
+
+## 🎯 Формулы классификации
+
+**Softmax:**
+```
+P(y=i) = e^(z_i) / ∑(e^(z_j))
+```
+
+**Cross-Entropy Loss:**
+```
+L = -∑(y_i × log(p_i))
+```
+
+**Логистическая регрессия:**
+```
+P(y=1|x) = 1 / (1 + e^(-(wx + b)))
+```
+
+## 🔮 Формулы вероятности
+
+**Теорема Байеса:**
+```
+P(A|B) = P(B|A) × P(A) / P(B)
+```
+
+**Наивный байесовский классификатор:**
+```
+P(C|X) ∝ P(C) × ∏P(x_i|C)
+```
+
+**Условная вероятность:**
+```
+P(Y|X) = P(X,Y) / P(X)
+```
+
+## 🧬 Формулы генеративных моделей
+
+**GAN (Генеративно-состязательная сеть):**
+```
+min_G max_D V(D,G) = E[log D(x)] + E[log(1 - D(G(z)))]
+```
+
+**VAE (Вариационный автокодировщик):**
+```
+L = E[log p(x|z)] - KL(q(z|x) || p(z))
+```
+
+**Diffusion:**
+```
+x_t = √(α_t) × x_0 + √(1-α_t) × ε
+```
+
+## 🔤 Формулы NLP
+
+**Attention:**
+```
+Attention(Q,K,V) = softmax(QK^T / √d_k) × V
+```
+
+**Transformer:**
+```
+Output = LayerNorm(x + MultiHeadAttention(x))
+```
+
+**Word2Vec:**
+```
+P(w_o|w_i) = exp(v'_w_o · v_w_i) / ∑exp(v'_w · v_w_i)
+```
+
+## 👁️ Формулы компьютерного зрения
+
+**Свёртка:**
+```
+(I ⊗ K)(i,j) = ∑∑ I(m,n) × K(i-m, j-n)
+m n
+```
+
+**Pooling:**
+```
+MaxPool = max(region)
+AvgPool = mean(region)
+```
+
+**IoU (Intersection over Union):**
+```
+IoU = Площадь_пересечения / Площадь_объединения
+```
+
+## 🎮 Формулы обучения с подкреплением
+
+**Q-learning:**
+```
+Q(s,a) ← Q(s,a) + α[r + γ max Q(s',a') - Q(s,a)]
+                              a'
+```
+
+**Награда:**
+```
+R_total = ∑(γ^t × r_t)
+t
+где γ — discount factor
+```
+
+**Policy Gradient:**
+```
+∇J(θ) = E[∇log π(a|s,θ) × Q(s,a)]
+```
+
+## 💾 Формулы данных
+
+**Размер данных для обучения:**
+```
+Данные ∝ Параметры_модели
+D ∝ P
+больше параметров → больше данных
+```
+
+**Переобучение:**
+```
+Переобучение = Точность_train - Точность_test
+Overfitting = Acc_train - Acc_test
+```
+
+**Регуляризация:**
+```
+L_total = L_data + λ × L_regularization
+```
+
+## ⚡ Формулы вычислений
+
+**FLOPs:**
+```
+FLOPs = 2 × (входы × выходы × размер_фильтра²)
+```
+
+**Параметры модели:**
+```
+Params = ∑(weights + biases) по всем слоям
+```
+
+**Время обучения:**
+```
+T = (Размер_данных × Эпохи × FLOPs) / Вычислительная_мощь
+```
+
+## 🎯 Формулы оптимизации
+
+**Momentum:**
+```
+v_t = β × v_{t-1} + (1-β) × ∇L
+θ_t = θ_{t-1} - α × v_t
+```
+
+**Adam:**
+```
+m_t = β_1 × m_{t-1} + (1-β_1) × ∇L
+v_t = β_2 × v_{t-1} + (1-β_2) × (∇L)²
+θ_t = θ_{t-1} - α × m_t / (√v_t + ε)
+```
+
+**Learning Rate Decay:**
+```
+α_t = α_0 / (1 + decay × t)
+```
+
+## 🔬 Формулы исследований
+
+**Scaling Laws:**
+```
+Loss ∝ Compute^(-α)
+Loss ∝ Data^(-β)
+Loss ∝ Parameters^(-γ)
+```
+
+**Chinchilla Scaling:**
+```
+Оптимально: Данные ≈ 20 × Параметры
+D ≈ 20 × P
+```
+
+**Compute для обучения:**
+```
+C ≈ 6 × N × D
+где N — параметры, D — токены
+```
+
+## 🌐 Формулы архитектур
+
+**ResNet (остаточная связь):**
+```
+y = F(x) + x
+```
+
+**Skip Connection:**
+```
+Output = Layer(x) + x
+```
+
+**Bottleneck:**
+```
+Squeeze → Process → Expand
+```
+
+## 📉 Формулы loss functions
+
+**MSE (Mean Squared Error):**
+```
+MSE = (1/n) × ∑(y_i - ŷ_i)²
+```
+
+**MAE (Mean Absolute Error):**
+```
+MAE = (1/n) × ∑|y_i - ŷ_i|
+```
+
+**Huber Loss:**
+```
+L_δ = { ½(y-ŷ)²            if |y-ŷ| ≤ δ
+      { δ(|y-ŷ| - ½δ)      otherwise
+```
+
+## 🎲 Формулы генерации
+
+**Temperature Sampling:**
+```
+P_i = exp(z_i/T) / ∑exp(z_j/T)
+где T — temperature
+```
+
+**Top-k Sampling:**
+```
+Выбрать из top k самых вероятных токенов
+```
+
+**Nucleus (Top-p) Sampling:**
+```
+Выбрать минимальный набор с P(∑) ≥ p
+```
+
+## 🔐 Формулы безопасности
+
+**Adversarial Attack:**
+```
+x_adv = x + ε × sign(∇_x L(θ, x, y))
+```
+
+**Robustness:**
+```
+Robustness = min ||δ|| : f(x+δ) ≠ f(x)
+            δ
+```
+
+**Privacy (Differential Privacy):**
+```
+P(M(D) ∈ S) ≤ e^ε × P(M(D') ∈ S)
+```
+
+## 📱 Формулы эффективности
+
+**Сжатие модели:**
+```
+Compression = Size_original / Size_compressed
+```
+
+**Latency:**
+```
+Latency = Inference_time + Network_time
+```
+
+**Throughput:**
+```
+Throughput = Requests / Second
+```
+
+## 🧪 Формулы экспериментов
+
+**A/B тестирование:**
+```
+p-value < 0.05 → статистически значимо
+```
+
+**Confidence Interval:**
+```
+CI = mean ± z × (σ / √n)
+```
+
+**Effect Size:**
+```
+Cohen's d = (mean₁ - mean₂) / σ_pooled
+```
+
+## 🎨 Формулы стиля
+
+**Style Transfer:**
+```
+L_total = α × L_content + β × L_style
+```
+
+**Gram Matrix:**
+```
+G_ij = ∑(F_ik × F_jk)
+k
+```
+
+## 🔊 Формулы аудио
+
+**Spectrogram:**
+```
+S(t,f) = |STFT(x(t))|²
+```
+
+**Mel Scale:**
+```
+m = 2595 × log₁₀(1 + f/700)
+```
+
+## 🌟 Философские формулы ИИ
+
+**Интеллект:**
+```
+Интеллект ≠ Обучение_на_данных
+I ≠ Learning
+```
+
+**Сознание:**
+```
+Сознание ∉ современные_ИИ
+Consciousness ∉ current_AI
+```
+
+**AGI (Artificial General Intelligence):**
+```
+AGI = lim(Специализированный_ИИ → ∞) ?
+AGI = lim(Narrow_AI → ∞) ?
+неизвестно
+```
+
+## 🚀 Формулы будущего
+
+**Singularity:**
+```
+lim(t→T_singularity) Progress(t) → ∞
+```
+
+**Scaling до AGI:**
+```
+AGI = f(Compute, Data, Architecture, ?)
+где ? — неизвестные факторы
+```
+
+**Эмерджентность:**
+```
+Способности ∝ Scale^α
+при Scale > threshold → новые способности
+```

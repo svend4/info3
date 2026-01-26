@@ -1,0 +1,309 @@
+metadata:
+  topic: искусственный-интеллект
+  title: "Четырёхуровневая система познания: Искусственный интеллект"
+  format_version: "1.0"
+  language: ru
+  created: "2026-01-26"
+
+level_1_formula:
+  name: Формула
+  description: Самое общее, абстрактное, техническое
+
+  primary_formula:
+    expression: "AI = D × A × C"
+    variables:
+      AI: Artificial Intelligence — искусственный интеллект
+      D: Data — данные для обучения
+      A: Algorithm — алгоритм, архитектура модели
+      C: Compute — вычислительная мощность
+
+  alternative_formula:
+    expression: "L = f(W, X, Y)"
+    variables:
+      L: Loss — функция потерь (минимизируется)
+      W: Weights — веса нейронной сети
+      X: Input — входные данные
+      Y: Target — целевые значения
+    goal: Минимизировать L путём оптимизации W
+
+level_2_archetype:
+  name: Архетип
+  description: Расширенная формула, безличная, детальная
+
+  components:
+    big_data:
+      name: Большие данные (Big Data)
+      properties:
+        - Объём: миллионы/миллиарды примеров
+        - Качество: чистые, размеченные, репрезентативные данные
+        - Разнообразие: покрытие всех случаев
+        - Баланс: равномерное представление классов
+        - "Принцип: Garbage in, garbage out"
+
+    neural_architecture:
+      name: Архитектура нейросети
+      types:
+        - CNN (изображения)
+        - RNN/LSTM (последовательности)
+        - Transformer (язык)
+      parameters:
+        - "Глубина: количество слоёв"
+        - "Ширина: количество нейронов в слое"
+        - "Связи: residual connections, attention mechanism"
+
+    compute_power:
+      name: Вычислительная мощность
+      resources:
+        - GPU/TPU для параллельных вычислений
+        - "Облачные ресурсы: AWS, Google Cloud, Azure"
+      scale_example: "Обучение GPT-3 = тысячи GPU, месяцы времени"
+
+    challenges:
+      overfitting:
+        name: Переобучение
+        description: Модель запоминает данные, не обобщает
+        symptoms: Отлично на train set, плохо на test set
+        solutions:
+          - Регуляризация
+          - Dropout
+          - Больше данных
+
+      data_bias:
+        name: Bias в данных
+        danger: Модель усиливает предвзятости общества
+        examples:
+          - Системы распознавания лиц хуже работают на тёмной коже
+        solutions:
+          - Балансировка данных
+          - Fairness metrics
+
+      interpretability:
+        name: Недостаток интерпретируемости
+        problem: "Нейросети = чёрный ящик"
+        solutions:
+          - XAI (Explainable AI)
+          - LIME
+          - SHAP
+
+  ml_types:
+    supervised:
+      name: Обучение с учителем
+      data: "Размеченные данные: (вход, правильный выход)"
+      examples:
+        - Классификация изображений
+        - Распознавание речи
+      requirement: Много размеченных данных (дорого)
+
+    unsupervised:
+      name: Обучение без учителя
+      data: Только входные данные, нет разметки
+      task: Поиск структуры, паттернов
+      examples:
+        - Кластеризация
+        - Уменьшение размерности
+
+    reinforcement:
+      name: Обучение с подкреплением
+      process: Агент учится через взаимодействие со средой
+      feedback: Награды/наказания за действия
+      examples:
+        - Игры (Go, шахматы)
+        - Роботы
+        - Автопилоты
+
+level_3_algorithm:
+  name: Алгоритм/Блок-схема
+  description: Обобщённая теорема, пошаговый процесс
+  pipeline_name: Machine Learning Pipeline
+
+  steps:
+    - step: 1
+      name: Определение задачи
+      actions:
+        - action: Формулирование проблемы
+          task_types:
+            - Классификация
+            - Регрессия
+            - Сегментация
+            - Генерация
+            - Рекомендации
+
+        - action: Метрики успеха
+          classification: [accuracy, precision, recall, F1-score]
+          regression: [MSE, MAE, R²]
+
+    - step: 2
+      name: Сбор и подготовка данных
+      actions:
+        - action: Сбор данных
+          sources: [Существующие базы, Краулинг, Сенсоры]
+          principle: "Качество > количество"
+
+        - action: Разметка данных
+          methods: [Аннотация людьми, Краудсорсинг]
+
+        - action: Предобработка
+          tasks:
+            - "Очистка: удаление дубликатов, пропусков, выбросов"
+            - "Нормализация: приведение к одному масштабу"
+            - "Feature engineering: создание новых признаков"
+            - "Разделение: Train (70-80%), Validation (10-15%), Test (10-15%)"
+
+    - step: 3
+      name: Выбор модели и архитектуры
+      decision_tree:
+        tabular_data: "Random Forest, XGBoost, LightGBM"
+        images: "CNN: ResNet, EfficientNet"
+        text: "Transformers: BERT, GPT, T5"
+        time_series: "RNN, LSTM, Transformer"
+      baseline: Начать с простой модели
+
+    - step: 4
+      name: Обучение модели
+      phases:
+        - phase: Инициализация
+          methods: [Случайная (Xavier, He), Предобученные веса]
+
+        - phase: Forward pass
+          steps: [Подать batch, Вычислить предсказания, Вычислить loss]
+
+        - phase: Backward pass
+          steps: [Вычислить градиенты, Chain rule, "Обновить: W -= lr × grad"]
+
+        - phase: Оптимизация
+          algorithms: [SGD, Adam, RMSprop, AdamW]
+
+    - step: 5
+      name: Подбор гиперпараметров
+      methods:
+        - Grid search (медленно, полно)
+        - Random search (быстрее)
+        - Bayesian optimization (Optuna, Hyperopt)
+
+    - step: 6
+      name: Оценка и тестирование
+      test_evaluation:
+        rule: ТОЛЬКО ОДИН РАЗ в конце
+        metrics: [accuracy, precision, recall, F1, AUC-ROC]
+      ab_testing:
+        groups: [A - старая система, B - новая модель]
+        decision: ЕСЛИ B лучше → внедрить
+
+    - step: 7
+      name: Интерпретация и объяснение
+      xai_methods: [LIME, SHAP, Attention maps, Feature importance]
+      fairness_check: Равномерность по группам (пол, раса, возраст)
+
+    - step: 8
+      name: Деплой и мониторинг
+      deployment:
+        packaging: [ONNX, TensorFlow Serving, TorchServe]
+        api: [REST API, gRPC]
+        infrastructure: [AWS SageMaker, Google AI Platform]
+      monitoring:
+        drift_detection:
+          - "Data drift: распределение данных изменилось"
+          - "Concept drift: связь признаков-целей изменилась"
+        action: ЕСЛИ drift → переобучить
+
+level_4_theorem:
+  name: Теорема
+  description: Конкретное, житейское (пословицы, афоризмы, примеры)
+
+  main_theorem: "Искусственный интеллект — это не магия, а статистика на стероидах"
+
+  context:
+    origin: Популярное выражение среди специалистов ML/AI
+    purpose: Развенчивание мифов об ИИ
+    media_myths:
+      - Всемогущий разум
+      - Магический чёрный ящик
+      - Сознательная сущность
+    reality:
+      - Математические модели, находящие паттерны
+      - Статистика: вероятностные предсказания
+      - Нет понимания, нет сознания — только вычисления
+
+  key_insights:
+    - insight: Развенчание мифа о понимании
+      myth: ИИ понимает текст/изображение
+      reality: ChatGPT предсказывает следующее слово на основе статистики
+      example:
+        question: "Что тяжелее: килограмм перьев или железа?"
+        wrong_answer: Килограмм железа
+        reason: Статистика из данных, нет логического рассуждения
+
+    - insight: Garbage In, Garbage Out
+      principle: Качество ИИ зависит от данных
+      consequences:
+        - Малый dataset → overfitting
+        - Несбалансированные данные → bias
+        - Неправильная разметка → ошибки
+      example:
+        system: Распознавание лиц
+        training: В основном светлокожие люди
+        result: Хуже работает на темнокожих
+
+    - insight: "Корреляция ≠ Причинность"
+      problem: ИИ находит корреляции, не понимает причинно-следственные связи
+      example:
+        data: Продажи мороженого коррелируют с убийствами
+        naive_model: Мороженое вызывает убийства
+        reality: Оба растут летом (жара = третья переменная)
+
+  real_world_examples:
+    - name: ChatGPT
+      impression: Кажется что понимает
+      reality:
+        architecture: Transformer с 175 млрд параметров
+        mechanism: "Предсказывает: P(word_n | word_1, ..., word_n-1)"
+        truth: НЕТ модели мира, НЕТ истинного понимания
+      lesson: Статистические паттерны, а не мышление
+
+    - name: AlphaGo
+      achievement: Победил Ли Седоля в Го (2016)
+      how_it_works:
+        - Supervised learning на миллионах игр
+        - Reinforcement learning - играет с собой
+      not_magic: Миллионы игр = статистика лучших ходов
+      limitation: Играет ТОЛЬКО в Го, не AGI
+
+    - name: Автопилот Tesla
+      system:
+        sensors: [Камеры, Радары, Ультразвук]
+        ai_tasks: [Распознавание объектов, Предсказание траекторий]
+      training:
+        data: Миллионы миль от реальных поездок
+      limitations:
+        edge_cases:
+          - Перевёрнутая фура
+          - Человек в костюме динозавра
+          - Снег закрыл камеры
+      lesson: "Статистика в 99% случаев, но 1% = критичен"
+
+    - name: Медицинская диагностика
+      system: ИИ для диагностики рака
+      results:
+        accuracy: Сопоставима с врачами
+        speed: Секунды vs минуты
+      why_not_replace:
+        - Не знает историю пациента
+        - Не видит контекст
+        - Не может объяснить диагноз
+      correct_use: ИИ = второе мнение, врач решает
+
+  practical_advice:
+    - "Не переоценивать ИИ: мощный инструмент, но не всемогущий"
+    - "Проверять качество данных: плохие данные → плохая модель"
+    - "Человек в цикле: ИИ предсказывает → человек утверждает"
+    - "Интерпретируемость: требовать объяснений (XAI)"
+    - "Тестировать на edge cases: редкие случаи"
+    - "Этика и fairness: проверять дискриминацию"
+    - "Понимать ограничения: не сознание, не AGI"
+
+  related_aphorisms:
+    - "Данные — новая нефть"
+    - "Модель настолько хороша, насколько хороши её данные"
+    - "С большой мощностью приходит большая ответственность"
+    - "ИИ не заменит людей, но люди с ИИ заменят тех, кто его не использует"
+    - "Мы переоцениваем ИИ в краткосрочной, недооцениваем в долгосрочной"

@@ -1,0 +1,23 @@
+# БАЗОВЫЕ ЗАВИСИМОСТИ (обязательные)
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+
+# SEMANTIC SEARCH (рекомендуется)
+sentence-transformers>=2.2.2
+faiss-cpu>=1.7.4
+numpy>=1.24.0
+
+# HTTP CLIENT (для примеров)
+requests>=2.31.0
+
+# ОПЦИОНАЛЬНЫЕ (для расширенных функций)
+# openai>=1.3.0          # Для интеграции с GPT
+# langchain>=0.1.0       # Для продвинутого RAG
+# redis>=5.0.0           # Для distributed кэша
+# pyyaml>=6.0            # Для YAML поддержки
+
+# DEV DEPENDENCIES (для разработки)
+# pytest>=7.4.0
+# black>=23.11.0
+# mypy>=1.7.0

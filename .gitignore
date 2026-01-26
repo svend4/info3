@@ -56,3 +56,10 @@ Thumbs.db
 
 # Redis dump
 dump.rdb
+
+# Demo output files
+demo_*.json
+demo_*.db
+demo_*.sqlite
+*_demo.json
+*_demo.db

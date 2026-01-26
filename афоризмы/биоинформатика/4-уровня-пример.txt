@@ -10,215 +10,249 @@
 DNA → RNA → Protein
 
 Геном человека:
-• 3 млрд пар оснований (A, T, G, C)
-• ~20,000-25,000 генов (кодируют белки)
-• 98.5% — некодирующая ДНК (регуляция, структура)
+• 3.2 миллиарда пар оснований (bp)
+• ~20,000 генов (кодируют белки)
+• 98% некодирующая ДНК ("junk" — но не совсем!)
 
-Секвенирование:
-Cost per genome = $100 млн (2001, Human Genome Project)
-                → $1,000 (2024, Illumina NovaSeq)
+Стоимость секвенирования генома:
+2001: $100,000,000 (Human Genome Project)
+2008: $1,000,000
+2014: $1,000
+2024: $200-600
 
-Moore's Law: удвоение каждые 2 года
-Sequencing cost: уменьшение в 100,000 раз за 20 лет!
+→ Закон Мура для геномики: быстрее чем Moore's Law!
 
 Sequence Alignment Score:
-Score = Σ (match × reward - mismatch × penalty - gap × penalty)
+S = Σ(match_score - mismatch_penalty - gap_penalty)
 
-BLAST E-value:
-E = m × n × 2^(-S)
+→ Насколько похожи две ДНК/белковые последовательности
+
+Статистическая значимость (p-value):
+E-value = m × n × P
 
 где:
-m, n — размеры сравниваемых последовательностей
-S — alignment score
+m — длина query
+n — размер базы данных
+P — вероятность случайного совпадения
 
-→ E-value < 0.05: статистически значимое совпадение
+→ E-value < 10^-5 считается значимым
 
 ┌────────────────────────────────────────────────────────────────────────────┐
 │ [2] АРХЕТИП — Развёрнутая формула с компонентами                           │
 └────────────────────────────────────────────────────────────────────────────┘
 
-Bioinformatics = (Sequencing × Databases) × (Analysis × ML) × (Applications)
+Bioinformatics = (Genomics × Proteomics) × (Algorithms × Databases) × (ML/AI)
 
 Компоненты:
 
-Sequencing (Секвенирование):
-├─ Sanger sequencing: "первое поколение", точный, медленный
-├─ Next-Generation Sequencing (NGS):
-│  ├─ Illumina: доминирует рынок, короткие чтения (150-300bp)
-│  ├─ Ion Torrent: полупроводниковая технология
-│  └─ MGI/BGI: китайская альтернатива Illumina
-├─ Third-Generation:
-│  ├─ PacBio (Pacific Biosciences): длинные чтения (10-100kb), низкая точность
-│  ├─ Oxford Nanopore: real-time, портативные устройства
-│  └─ Преимущества: длинные чтения решают repeat regions
-└─ Applications:
-   ├─ Whole Genome Sequencing (WGS): весь геном
-   ├─ Exome Sequencing: только coding regions (дешевле)
-   ├─ RNA-seq: экспрессия генов
-   ├─ ChIP-seq: белок-ДНК взаимодействия
-   └─ Single-cell sequencing: индивидуальные клетки
+Genomics (Геномика):
+├─ DNA Sequencing:
+│  ├─ Sanger sequencing: старый метод, 800 bp reads
+│  ├─ Illumina: short reads (150-300 bp), high accuracy
+│  ├─ PacBio: long reads (10-20 kb), lower accuracy
+│  ├─ Nanopore: ultra-long (100+ kb), portable
+│  └─ 10x Genomics: linked reads для phasing
+├─ Genome Assembly:
+│  ├─ De Bruijn graphs: короткие reads → contigs
+│  ├─ Overlap-layout-consensus: длинные reads
+│  └─ Reference-guided: выравнивание к известному геному
+├─ Variant Calling:
+│  ├─ SNPs (Single Nucleotide Polymorphisms): 1 bp changes
+│  ├─ Indels: insertions, deletions
+│  ├─ CNVs (Copy Number Variations): дупликации, делеции
+│  └─ Structural variants: большие перестройки
+├─ Gene Annotation:
+│  ├─ Gene prediction: где гены в геноме?
+│  ├─ Functional annotation: что делают гены?
+│  └─ Comparative genomics: сравнение между видами
+└─ GWAS (Genome-Wide Association Studies):
+   └─ Связь генетических вариантов с болезнями
+
+Transcriptomics (Транскриптомика):
+├─ RNA-seq: измерение экспрессии генов
+├─ Single-cell RNA-seq: индивидуальные клетки
+├─ Differential expression: какие гены up/down регулированы
+└─ Splice variants: альтернативный сплайсинг
+
+Proteomics (Протеомика):
+├─ Mass spectrometry: идентификация белков
+├─ Protein structure prediction:
+│  ├─ AlphaFold2 (DeepMind): революция 2020
+│  └─ RoseTTAFold (Baker lab)
+├─ Protein-protein interactions: PPI networks
+└─ Post-translational modifications: phosphorylation, etc.
+
+Метаболомика:
+├─ Metabolite profiling: малые молекулы в клетках
+└─ Pathway analysis: метаболические пути
+
+Algorithms (Алгоритмы):
+
+Sequence Alignment:
+├─ Needleman-Wunsch: global alignment (dynamic programming)
+├─ Smith-Waterman: local alignment
+├─ BLAST: heuristic search (быстрее, но не оптимально)
+└─ Burrows-Wheeler Transform: для mapping reads
+
+Phylogenetics:
+├─ Maximum Likelihood: статистическая модель эволюции
+├─ Bayesian inference: posterior probabilities
+└─ Neighbor-joining: быстрый distance-based метод
+
+Clustering:
+├─ Hierarchical clustering: дерево похожести
+├─ K-means: разделение на k кластеров
+└─ t-SNE, UMAP: визуализация high-dimensional data
 
 Databases (Базы данных):
-├─ Genomic:
-│  ├─ GenBank (NCBI): все опубликованные геномы
-│  ├─ Ensembl (EBI): аннотированные геномы
-│  ├─ UCSC Genome Browser: визуализация
-│  └─ 1000 Genomes: вариации у людей
-├─ Protein:
-│  ├─ UniProt: все известные белки
-│  ├─ PDB (Protein Data Bank): 3D структуры белков
-│  └─ Pfam: белковые семейства
-├─ Literature:
-│  ├─ PubMed: медицинские и биологические статьи
-│  └─ PubMed Central: full-text статьи
-└─ Disease:
-   ├─ OMIM: генетические заболевания
-   ├─ ClinVar: клинические варианты
-   └─ GWAS Catalog: genome-wide association studies
 
-Analysis Tools (Инструменты анализа):
-├─ Sequence Alignment:
-│  ├─ BLAST: поиск похожих последовательностей
-│  ├─ BLAT: быстрее BLAST, для больших геномов
-│  ├─ Bowtie/BWA: alignment reads к reference genome
-│  └─ Needleman-Wunsch, Smith-Waterman: точные алгоритмы
-├─ Variant Calling:
-│  ├─ GATK: gold standard для SNP/indel calling
-│  ├─ VarScan, FreeBayes: альтернативы
-│  └─ Определение мутаций (SNPs, insertions, deletions)
-├─ Gene Expression:
-│  ├─ DESeq2, edgeR: differential expression analysis
-│  ├─ Находит гены, которые up/down regulated
-│  └─ RNA-seq analysis
-├─ Phylogenetics:
-│  ├─ MEGA: построение эволюционных деревьев
-│  ├─ RAxML: maximum likelihood trees
-│  └─ Изучение эволюционных связей
-└─ Genome Assembly:
-   ├─ SPAdes, Velvet: собирают геном из коротких чтений
-   ├─ Canu, Flye: для длинных чтений
-   └─ De novo assembly: без reference genome
+Sequence Databases:
+├─ GenBank (NCBI): все public sequences
+├─ ENA (EBI): European Nucleotide Archive
+├─ DDBJ: Japan
+└─ UniProt: белковые последовательности, аннотации
 
-Machine Learning в биоинформатике:
-├─ Sequence Prediction:
-│  ├─ Gene finding: где начинаются/заканчиваются гены
-│  ├─ Splice site prediction: intron/exon границы
-│  └─ Promoter detection: regulatory regions
-├─ Protein Structure Prediction:
-│  ├─ AlphaFold (DeepMind): революция в предсказании структуры
-│  ├─ RoseTTAFold: альтернатива от Baker lab
-│  └─ Решена 50-летняя проблема protein folding
-├─ Drug Discovery:
-│  ├─ Molecule generation: AI создаёт кандидаты
-│  ├─ Binding affinity prediction: как сильно связывается
-│  └─ Toxicity prediction: побочные эффекты
-├─ Genomic Medicine:
-│  ├─ Variant interpretation: патогенный или benign?
-│  ├─ Disease risk prediction: polygenic risk scores
-│  └─ Pharmacogenomics: какие лекарства подойдут
-└─ Image Analysis:
-   ├─ Microscopy: cell counting, phenotype classification
-   └─ Pathology: tumor detection, grading
+Structural Databases:
+├─ PDB (Protein Data Bank): 3D структуры белков
+└─ AlphaFold DB: предсказанные структуры всех белков
+
+Pathway Databases:
+├─ KEGG: метаболические пути
+├─ Reactome: biological pathways
+└─ GO (Gene Ontology): функциональная классификация
+
+Disease Databases:
+├─ OMIM: генетические болезни
+├─ ClinVar: клиническая значимость вариантов
+└─ TCGA: cancer genomics
+
+ML/AI в биоинформатике:
+
+Supervised Learning:
+├─ Gene prediction: классификация регионов ДНК
+├─ Variant pathogenicity: вредный вариант или нет?
+├─ Drug response prediction: фармакогеномика
+└─ Disease risk prediction: polygenic risk scores
+
+Unsupervised Learning:
+├─ Clustering: группировка генов, клеток
+├─ Dimensionality reduction: PCA, t-SNE для визуализации
+└─ Topic modeling: функциональные модули
+
+Deep Learning:
+├─ AlphaFold: protein structure prediction (transformer)
+├─ DeepSEA: regulatory elements prediction (CNN)
+├─ DeepVariant: variant calling (CNN)
+└─ scGen: single-cell data analysis (VAE)
+
+Generative Models:
+├─ Molecule generation: новые лекарства
+├─ Protein design: synthetic proteins
+└─ Genome editing design: CRISPR guide design
 
 Applications (Применения):
 
-1. Персонализированная медицина:
-   ├─ Cancer genomics: мутации опухоли → таргетная терапия
-   ├─ Rare diseases: диагностика через WGS/WES
-   ├─ Pharmacogenomics: дозировка лекарств по генетике
-   └─ Preventive medicine: genetic risk scores
+Precision Medicine:
+├─ Pharmacogenomics: индивидуальный подбор лекарств
+├─ Cancer genomics: таргетная терапия
+├─ Rare disease diagnosis: whole exome/genome sequencing
+└─ Prenatal testing: non-invasive screening
 
-2. Drug Discovery:
-   ├─ Target identification: какие белки атаковать
-   ├─ Virtual screening: in silico отбор молекул
-   ├─ Clinical trial optimization: stratification пациентов
-   └─ Repurposing: новые применения старых лекарств
+Drug Discovery:
+├─ Target identification: какие белки атаковать
+├─ Virtual screening: in silico поиск кандидатов
+├─ Lead optimization: улучшение молекул
+└─ Clinical trial design: patient stratification
 
-3. Agriculture:
-   ├─ Crop improvement: genomic selection
-   ├─ Livestock breeding: генетика для productivity
-   ├─ Disease resistance: идентификация устойчивых вариантов
-   └─ GMO: генетическая модификация культур
+Synthetic Biology:
+├─ Genome editing: CRISPR-Cas9
+├─ Metabolic engineering: биотопливо, chemicals
+├─ Synthetic genomes: минимальные геномы
+└─ Gene therapy: лечение генетических болезней
 
-4. Evolutionary Biology:
-   ├─ Phylogenetics: эволюционные деревья
-   ├─ Population genetics: миграции, смешения
-   ├─ Ancient DNA: неандертальцы, денисовцы
-   └─ Metagenomics: микробные сообщества
+Agriculture:
+├─ Crop improvement: yield, disease resistance
+├─ Livestock breeding: genomic selection
+└─ Pathogen surveillance: plant/animal diseases
 
-5. Synthetic Biology:
-   ├─ Gene editing: CRISPR-Cas9
-   ├─ Metabolic engineering: микроорганизмы производят лекарства
-   ├─ De novo gene synthesis: создание искусственных генов
-   └─ Biofuels: бактерии производят топливо
+Forensics:
+├─ DNA fingerprinting: идентификация личности
+├─ Paternity testing
+└─ Crime scene analysis
 
-6. Forensics & Ancestry:
-   ├─ DNA fingerprinting: идентификация личности
-   ├─ Ancestry testing: 23andMe, AncestryDNA
-   └─ Paternity testing
+Ecology & Evolution:
+├─ Metagenomics: микробные сообщества
+├─ Population genomics: эволюция, миграция
+└─ Conservation genetics: endangered species
+
+Challenges (Вызовы):
+
+Computational:
+├─ Data volume: петабайты sequences
+├─ Storage: долгосрочное хранение
+├─ Compute: assembly, alignment требуют HPC
+└─ Reproducibility: версионирование, workflows
+
+Biological:
+├─ Interpretation: что значат варианты?
+├─ Missing heritability: GWAS объясняет <50%
+├─ Non-coding regions: функции неясны
+└─ Complexity: epistasis, environment interactions
+
+Ethical:
+├─ Privacy: genetic discrimination
+├─ Consent: использование данных
+├─ Equity: доступ к genomic medicine
+└─ Designer babies: germline editing ethics
 
 ┌────────────────────────────────────────────────────────────────────────────┐
-│ [3] АЛГОРИТМ / БЛОК-СХЕМА — Genomic Analysis Pipeline                      │
+│ [3] АЛГОРИТМ / БЛОК-СХЕМА — От секвенирования к клиническому применению    │
 └────────────────────────────────────────────────────────────────────────────┘
 
                     ┌─────────────────────────┐
                     │  1. SAMPLE COLLECTION   │
-                    │  • Кровь, слюна, ткань  │
+                    │  • Blood, saliva, tissue│
                     │  • DNA extraction       │
                     └───────────┬─────────────┘
                                 │
                                 ▼
                     ┌─────────────────────────┐
-                    │  2. LIBRARY PREP        │
-                    │  • Fragmentation DNA    │
-                    │  • Adapters ligation    │
-                    │  • PCR amplification    │
+                    │  2. SEQUENCING          │
+                    │  • Illumina, PacBio     │
+                    │  • Whole genome/exome   │
+                    │  • Quality control      │
                     └───────────┬─────────────┘
                                 │
                                 ▼
                     ┌─────────────────────────┐
-                    │  3. SEQUENCING          │
-                    │  • Illumina NovaSeq     │
-                    │  • 30x coverage для WGS │
-                    │  • ~1 млрд reads        │
+                    │  3. ALIGNMENT           │
+                    │  • Map reads to reference│
+                    │  • BWA, Bowtie2         │
+                    │  • BAM/SAM files        │
                     └───────────┬─────────────┘
                                 │
                                 ▼
                     ┌─────────────────────────┐
-                    │  4. QUALITY CONTROL     │
-                    │  • FastQC: качество reads│
-                    │  • Trimming: удаление   │
-                    │    adapters, low quality│
+                    │  4. VARIANT CALLING     │
+                    │  • SNPs, indels         │
+                    │  • GATK, FreeBayes      │
+                    │  • VCF files            │
                     └───────────┬─────────────┘
                                 │
                                 ▼
                     ┌─────────────────────────┐
-                    │  5. ALIGNMENT           │
-                    │  • BWA: align к reference│
-                    │  • SAM/BAM файлы        │
+                    │  5. ANNOTATION          │
+                    │  • Variant effect       │
+                    │  • Pathogenicity prediction│
+                    │  • ClinVar, dbSNP       │
                     └───────────┬─────────────┘
                                 │
                                 ▼
                     ┌─────────────────────────┐
-                    │  6. VARIANT CALLING     │
-                    │  • GATK: SNPs, indels   │
-                    │  • VCF файл с вариантами│
-                    └───────────┬─────────────┘
-                                │
-                                ▼
-                    ┌─────────────────────────┐
-                    │  7. ANNOTATION          │
-                    │  • Функция варианта     │
-                    │  • Патогенность         │
-                    │  • Клиническая значимость│
-                    └───────────┬─────────────┘
-                                │
-                                ▼
-                    ┌─────────────────────────┐
-                    │  8. INTERPRETATION      │
-                    │  • Clinically actionable│
-                    │    variants             │
-                    │  • Report generation    │
+                    │  6. INTERPRETATION      │
+                    │  • Clinical significance│
+                    │  • Genetic counseling   │
+                    │  • Treatment decisions  │
                     └─────────────────────────┘
 
 ┌────────────────────────────────────────────────────────────────────────────┐
@@ -227,8 +261,8 @@ Applications (Применения):
 
 ТЕОРЕМА:
 
-"Мы можем читать геном дешевле, чем когда-либо, 
-но понимание того, что прочитали, — всё ещё grand challenge"
+"Мы можем прочитать геном легко, но интерпретировать его — всё ещё сложно. 
+Данные опережают понимание"
 
 ═══════════════════════════════════════════════════════════════════════════
 
@@ -237,106 +271,122 @@ Applications (Применения):
 РЕВОЛЮЦИЯ СЕКВЕНИРОВАНИЯ:
 
 2003: Human Genome Project завершён
-• $2.7 миллиарда потрачено
-• 13 лет работы
-• Первый полный человеческий геном
+• $3 миллиарда, 13 лет
+• 3.2 миллиарда пар оснований
 
-2024: $1,000 за геном
-• 1 день работы
-• Routine clinical test
+2024: Whole genome за день
+• $200-600
+• Миллионы геномов секвенированы
 
-Падение стоимости опережает закон Мура в 100 раз!
+Data generation >> Data interpretation
 
-ДАННЫЕ ВЗРЫВ:
+ПРОБЛЕМА ИНТЕРПРЕТАЦИИ:
 
-Genomic data растёт быстрее, чем:
-• YouTube (видео)
-• Twitter (текст)
-• Астрономические данные
+1. VARIANTS OF UNKNOWN SIGNIFICANCE (VUS):
+   • ~30,000 variants в каждом геноме
+   • ~100-200 coding variants уникальны для индивида
+   • Большинство: неизвестная клиническая значимость
+   
+   Пример: BRCA1 ген (рак груди)
+   • Известные патогенные: ясно → профилактическая мастэктомия
+   • VUS: что делать? Неясно
 
-К 2025: оценка 40 exabytes геномных данных/год
+2. MISSING HERITABILITY:
+   • GWAS находят варианты для болезней
+   • НО объясняют <50% наследуемости
+   • Где остальное? Редкие варианты? Epistasis? Environment?
 
-ПРОБЛЕМА: ИНТЕРПРЕТАЦИЯ
+3. NON-CODING REGIONS:
+   • 98% генома не кодирует белки
+   • Функции большинства неизвестны
+   • ENCODE проект: многое regulatory, но детали неясны
 
-Мы знаем:
-• 3 млрд пар оснований в геноме
-• ~20,000 генов
+УСПЕХИ:
 
-НО не знаем:
-• Функцию большинства генов (30-40% unknown function)
-• Что делают 98.5% некодирующей ДНК (junk DNA?)
-• Как гены взаимодействуют (networks)
-• Epigenetics: регуляция без изменения ДНК
+1. ALPHAFOLD2 (2020) — Protein Structure Revolution:
+   • Предсказывает 3D структуру белка из последовательности
+   • Accuracy: >90% (соревнуется с экспериментальными методами)
+   • Impact: 200+ million structures предсказаны
+   • Nobel Prize 2024 (Chemistry) — Demis Hassabis, John Jumper
+   
+   До AlphaFold: ~170,000 экспериментальных структур за 50 лет
+   После AlphaFold: практически все известные белки за 2 года
+   
+   Применения:
+   • Drug discovery: знание структуры → дизайн лекарств
+   • Understanding diseases: мутации → структурные изменения
+   • Enzyme engineering: дизайн новых катализаторов
 
-Вариации:
-• Каждый человек: 4-5 млн вариантов от reference genome
-• Variants of Unknown Significance (VUS): большинство
-• Pathogenic vs Benign: сложно определить
+2. CRISPR GENE THERAPY:
+   • 2020: FDA approval первой CRISPR терапии (sickle cell disease)
+   • Casgevy: редактирование гемоглобина
+   • Пациенты излечены от болезни
+   
+   Потенциал: лечение тысяч генетических болезней
+   
+   НО: challenges
+   • Off-target effects: нежелательное редактирование
+   • Delivery: как доставить в нужные клетки?
+   • Cost: $2+ million за лечение
+   • Ethics: germline editing (наследуемые изменения)
 
-CHALLENGES:
+3. CANCER GENOMICS:
+   • Секвенирование опухолей: какие мутации?
+   • Таргетная терапия: лекарства для специфических мутаций
+   
+   Примеры:
+   • Herceptin: HER2+ breast cancer
+   • Gleevec: BCR-ABL fusion в CML (chronic myeloid leukemia)
+   • Checkpoint inhibitors: для high mutation burden опухолей
+   
+   Результат: improved survival для многих раков
 
-1. Missing heritability:
-   GWAS находят варианты, но объясняют малую часть наследуемости
-   Пример: рост человека — 80% heritability, но найдено только 20-30%
+ПРОВАЛЫ:
 
-2. Polygenic traits:
-   Большинство признаков: множество генов с малым эффектом
-   Нельзя просто "найти ген диабета" — это сотни генов
+1. THERANOS (2003-2018):
+   • Обещание: сотни тестов из капли крови
+   • Реальность: технология не работала
+   • Fraud: Elizabeth Holmes — тюрьма
+   • Урок: биология сложнее, чем кажется; hype != reality
 
-3. Gene-environment interactions:
-   Genetics + environment → phenotype
-   Сложно разделить
+2. POLYGENIC RISK SCORES — Oversold:
+   • Идея: тысячи вариантов → предсказание риска болезни
+   • Проблема: 
+     - Accuracy низкая для большинства болезней
+     - Работает в основном для европейцев (bias в данных)
+     - Anxiety без actionable информации
+   • Коммерческие компании (23andMe) продают, но clinical utility сомнительна
 
-4. Rare variants:
-   Многие болезни: редкие варианты в разных генах
-   Требуются огромные cohorts для изучения
-
-AlphaFold — прорыв:
-2020: AlphaFold2 решает protein folding
-→ Предсказывает 3D структуру белка из последовательности
-→ 200 млн структур предсказано
-→ НО: структура ≠ функция полностью
+3. PHARMACOGENOMICS — Slow Adoption:
+   • Обещание: персонализированные лекарства на основе генетики
+   • Реальность: лишь несколько лекарств имеют clear genetic guidelines
+   • Проблема: complexity, cost, physician education
+   • Успехи ограничены (например, warfarin dosing, clopidogrel)
 
 БУДУЩЕЕ:
 
-Оптимистично:
-• Multi-omics: геном + транскриптом + протеом + метаболом
-• Single-cell: понимание на уровне отдельных клеток
-• AI: интеграция всех данных для понимания
-• CRISPR: возможность править геном (терапия)
+Оптимистичный сценарий:
+• Геномное секвенирование при рождении (newborn screening)
+• Предсказание и предотвращение болезней
+• Персонализированная медицина для всех
+• CRISPR лечит генетические болезни
 
-Реалистично:
-• Incremental progress: медленное накопление знаний
-• Low-hanging fruit собраны: дальше сложнее
-• Interpretation bottleneck: секвенирование дешевое, анализ — дорогой
+Пессимистичный:
+• Data без понимания
+• Genetic discrimination (страхование, работа)
+• Equity issues: только богатые получают доступ
+• Ethical dilemmas: designer babies
 
-Этически сложно:
-• Privacy: genetic discrimination
-• Equity: access to genomic medicine
-• Designer babies: где граница?
+Реалистичный:
+• Постепенный прогресс в интерпретации
+• Hybrid подход: genomics + traditional medicine
+• Regulation для защиты от дискриминации
+• Фокус на actionable findings
 
-═══════════════════════════════════════════════════════════════════════════
+УРОК:
+Технология опережает науку. Мы можем генерировать data быстрее, чем понимать его.
 
-ПРИМЕРЫ:
-
-[Human Genome Project, AlphaFold protein folding revolution,
-CRISPR babies (He Jiankui scandal), 23andMe ancestry testing,
-mRNA vaccines (COVID-19), Cancer genomics precision medicine]
-
-═══════════════════════════════════════════════════════════════════════════
-
-ЗАКЛЮЧЕНИЕ:
-
-Биоинформатика находится на пересечении biology, computer science, и statistics.
-Секвенирование стало дёшевым, генерируя tsunami данных.
-
-НО: от данных к знаниям — долгий путь.
-Reading the genome ≠ Understanding the genome.
-
-Следующий grand challenge: functional genomics.
-Не "какие гены есть", а "что они делают и как взаимодействуют".
-
-"Геном — это книга жизни. Мы научились читать слова, 
-но всё ещё учимся понимать предложения и главы."
+Биоинформатика — критический мост между данными и знаниями.
+Но мост всё ещё строится.
 
 ════════════════════════════════════════════════════════════════════════════════

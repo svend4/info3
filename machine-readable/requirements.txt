@@ -20,11 +20,14 @@ prometheus-client>=0.19.0  # Metrics
 # PERSISTENT STORAGE (опционально)
 redis>=5.0.0           # Для distributed кэша
 
+# GRAPH KNOWLEDGE BASE (Уровень 2.1)
+neo4j>=5.14.0          # Для Neo4j backend
+networkx>=3.0          # Для fallback и визуализации
+
 # ОПЦИОНАЛЬНЫЕ (для расширенных функций)
 # openai>=1.3.0          # Для интеграции с GPT
 # langchain>=0.1.0       # Для продвинутого RAG
 # pyyaml>=6.0            # Для YAML поддержки
-# neo4j>=5.14.0          # Для Graph Knowledge Base
 # pillow>=10.1.0         # Для Multi-Modal (изображения)
 
 # DEV DEPENDENCIES (для разработки)

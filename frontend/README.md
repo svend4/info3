@@ -381,7 +381,7 @@ GET /health/detailed   - Health check
 ## 📄 License
 
 Part of the RAG Knowledge Base system.
-See main project README for details.
+GNU Affero General Public License, version 3 only (SPDX: `AGPL-3.0-only`). See the [LICENSE](../LICENSE) file in the repository root. The licence applies from 2 November 2026.
 
 ## 🤝 Contributing
 

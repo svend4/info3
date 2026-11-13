@@ -533,7 +533,7 @@ from sentence_transformers import SentenceTransformer, InputExample, losses
 
 ## 📄 Лицензия
 
-MIT License - используйте свободно!
+GNU Affero General Public License, версия 3 (только эта версия; SPDX: `AGPL-3.0-only`). Полный текст — в файле [LICENSE](../LICENSE) в корне репозитория. Лицензия действует со 2 ноября 2026 г.
 
 ---
 
